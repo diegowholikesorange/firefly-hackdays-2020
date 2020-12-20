@@ -1,0 +1,9 @@
+{
+  "name": "Firefly Dashboard",
+  "version": "1.0",
+  "description": "Standup Dashboard for Firefly",
+  "manifest_version": 3,
+  "browser_action": {
+    "default_popup": "shell.html"
+  }
+}
