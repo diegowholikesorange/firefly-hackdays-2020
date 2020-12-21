@@ -4,6 +4,12 @@
     background-color:#faebdc;
 }
 
+#theme {
+    height:100%;
+    width:100%;
+    background-color:#faebdc;
+}
+
 button {
     width:100px;
 }
