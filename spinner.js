@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('document is ready. I can sleep now');
+    console.log('document is loaded, registering listeners');
     document.getElementById("spinnerButton")
         .addEventListener('click', selectRandomMember);
 });
