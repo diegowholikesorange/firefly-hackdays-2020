@@ -32,5 +32,5 @@ function selectRandomMember() {
     });
 
     let index = (Math.round(Math.random() * (teamMemberList.length - 1)));
-    document.getElementById("selectedPerson").value = teamMemberList[index]
+    document.getElementById("selectedPerson").innerText = teamMemberList[index]
 }
