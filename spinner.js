@@ -1,15 +1,35 @@
+let team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
+
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('document is loaded, registering listeners');
+    createTeamList();
     document.getElementById("spinnerButton")
         .addEventListener('click', selectRandomMember);
 });
 
+function createTeamList() {
+    let teamList =  document.getElementById("team-list");
+    team.forEach((teamMember) => {
+        let li = document.createElement('li');
+
+        li.innerHTML = `<label>\n` +
+            `<input type=\"checkbox\" id="${teamMember}-checkbox" checked>\n` +
+            `${teamMember}\n` +
+            `</label>`;
+
+        teamList.appendChild(li);
+    })
+}
+
 function selectRandomMember() {
+    let teamMemberList = []
 
-    var team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
+    team.forEach((teamMember) => {
+        let inputElement = document.getElementById(`${teamMember}-checkbox`);
+        if (inputElement.checked) {
+            teamMemberList.push(teamMember);
+        }
+    });
 
-    var index = (Math.round(Math.random() * (team.length - 1)));
-    var luckyOne = team[index];
-    console.log("Selected " + luckyOne);
-    document.getElementById("selectedPerson").value = luckyOne
+    let index = (Math.round(Math.random() * (teamMemberList.length - 1)));
+    document.getElementById("selectedPerson").value = teamMemberList[index]
 }
