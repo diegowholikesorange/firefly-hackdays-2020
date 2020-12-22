@@ -25,7 +25,7 @@ function createTeamList() {
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 async function spinWithCurve() {
 
-    MIDIjs.play('https://www.midiworld.com/download/2932');
+    MIDIjs.play('midis/ghostbusters.mid');
     var minSleep = 100;
     var maxSleep = 650;
     var numSpinValues = 25;
