@@ -6,9 +6,14 @@
   "browser_action": {
     "default_popup": "shell.html"
   },
+  "permissions": [
+    "*://*.midiworld.com/*"
+  ],
   "icons": {
     "16": "firefly_logo.png",
     "48": "firefly_logo.png",
     "128": "firefly_logo.png"
-  }
+  },
+  "content_security_policy":"script-src 'self' https://www.midijs.net; object-src 'self';"
 }
+
