@@ -24,13 +24,16 @@ function createTeamList() {
 
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 async function spinWithCurve() {
+
+    MIDIjs.play('midis/ghostbusters.mid');
     var minSleep = 100;
     var maxSleep = 650;
-    var numSpinValues = 20;
+    var numSpinValues = 25;
     for (var i = 0; i < numSpinValues; i++) {
         selectRandomMember();
         await sleep(lerp(minSleep,maxSleep,(i*i)/(numSpinValues*numSpinValues)));
     }
+    MIDIjs.stop();
     selectRandomMember(true);
 }
 
