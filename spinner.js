@@ -38,7 +38,7 @@ async function spinWithCurve() {
 }
 
 function playMusic() {
-    const songFiles = ['ghostbusters', 'final-countdown'];
+    const songFiles = ['ghostbusters', 'finalCountdown', 'aladin', 'VivaLaVida', 'LegendOfZeldaOverworld', 'Numb', 'BeatIt'];
     let index = (Math.round(Math.random() * (songFiles.length - 1)));
     let selectedMidiFile =  'midis/'+songFiles[index]+'.mid';
     console.log("Playing music from MIDI file " + selectedMidiFile);
