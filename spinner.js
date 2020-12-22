@@ -21,20 +21,45 @@ function createTeamList() {
     })
 }
 
+const startFreq = 44;
+const endFreq = 880;
+const volume = 0.05;
+const minSleep = 100;
+const maxSleep = 400;
+const numSpinValues = 20;
+let oscillator;
+let gainNode;
 
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 async function spinWithCurve() {
 
-    playMusic();
-    var minSleep = 100;
-    var maxSleep = 650;
-    var numSpinValues = 25;
+    setupAudio();
+
     for (var i = 0; i < numSpinValues; i++) {
+        let interpolation = (i*i)/(numSpinValues*numSpinValues);
         selectRandomMember();
-        await sleep(lerp(minSleep,maxSleep,(i*i)/(numSpinValues*numSpinValues)));
+        playNote(interpolation);
+
+        let sleepTime = lerp(minSleep,maxSleep,interpolation);
+        await sleep(sleepTime);
     }
     selectRandomMember(true);
-    stopMusic()
+    oscillator.stop();
+}
+
+function setupAudio() {
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    gainNode = audioCtx.createGain();
+    gainNode.connect(audioCtx.destination);
+    gainNode.gain.value = volume;
+    oscillator = audioCtx.createOscillator();
+    oscillator.type = "square";
+    oscillator.connect(gainNode);
+    oscillator.start(0);
+}
+
+function playNote(interpolation) {
+    oscillator.frequency.value = startFreq + interpolation*(endFreq-startFreq);
 }
 
 function playMusic() {
