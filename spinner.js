@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     createTeamList();
     document.getElementById("spinnerButton")
         .addEventListener('click', spinWithCurve);
+    document.getElementById("playMusicButton")
+        .addEventListener('click', playMusic);
+    document.getElementById("stopMusicButton")
+        .addEventListener('click', stopMusic);
 });
 
 let team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
@@ -68,6 +72,8 @@ function playMusic() {
     let selectedMidiFile =  'midis/'+songFiles[index]+'.mid';
     console.log("Playing music from MIDI file " + selectedMidiFile);
     MIDIjs.play(selectedMidiFile);
+
+    document.getElementById("songLabel").innerText = "Now playing: " + songFiles[index];
 }
 
 function stopMusic() {

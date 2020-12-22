@@ -54,3 +54,8 @@ ul {
     width: 300px;
     height: 70px;
 }
+
+/* Play a song */
+#songLabel:empty::before {
+    content: "\200b";
+}
