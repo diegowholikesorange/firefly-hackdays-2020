@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     createTeamList();
     document.getElementById("spinnerButton")
-        .addEventListener('click', spin);
+        .addEventListener('click', spinWithCurve);
 });
 
 let team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
@@ -21,30 +21,16 @@ function createTeamList() {
     })
 }
 
-async function spin() {
-    for (var i = 0; i < 20; i++) {
+
+const lerp = (x, y, a) => x * (1 - a) + y * a;
+async function spinWithCurve() {
+    var minSleep = 100;
+    var maxSleep = 650;
+    var numSpinValues = 20;
+    for (var i = 0; i < numSpinValues; i++) {
         selectRandomMember();
-        await sleep(100);
+        await sleep(lerp(minSleep,maxSleep,(i*i)/(numSpinValues*numSpinValues)));
     }
-
-    selectRandomMember();
-    await sleep(300);
-
-    selectRandomMember();
-    await sleep(300);
-
-    selectRandomMember();
-    await sleep(300);
-
-    selectRandomMember();
-    await sleep(400);
-
-    selectRandomMember();
-    await sleep(500);
-
-    selectRandomMember();
-    await sleep(650);
-
     selectRandomMember(true);
 }
 
