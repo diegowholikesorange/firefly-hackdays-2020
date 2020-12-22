@@ -25,7 +25,7 @@ function createTeamList() {
 const lerp = (x, y, a) => x * (1 - a) + y * a;
 async function spinWithCurve() {
 
-    MIDIjs.play('midis/ghostbusters.mid');
+    playMusic();
     var minSleep = 100;
     var maxSleep = 650;
     var numSpinValues = 25;
@@ -33,8 +33,21 @@ async function spinWithCurve() {
         selectRandomMember();
         await sleep(lerp(minSleep,maxSleep,(i*i)/(numSpinValues*numSpinValues)));
     }
-    MIDIjs.stop();
     selectRandomMember(true);
+    stopMusic()
+}
+
+function playMusic() {
+    const songFiles = ['ghostbusters', 'final-countdown'];
+    let index = (Math.round(Math.random() * (songFiles.length - 1)));
+    let selectedMidiFile =  'midis/'+songFiles[index]+'.mid';
+    console.log("Playing music from MIDI file " + selectedMidiFile);
+    MIDIjs.play(selectedMidiFile);
+}
+
+function stopMusic() {
+    console.log("Stopping music")
+    MIDIjs.stop();
 }
 
 function selectRandomMember(isFinalSelection) {
@@ -49,6 +62,10 @@ function selectRandomMember(isFinalSelection) {
 
     let index = (Math.round(Math.random() * (teamMemberList.length - 1)));
     let memberText = teamMemberList[index];
+
+    if (isFinalSelection) {
+        console.log("Selected member" + memberText);
+    }
     document.getElementById("selectedPerson").innerText = isFinalSelection ? memberText + "!!!" : memberText
 }
 
