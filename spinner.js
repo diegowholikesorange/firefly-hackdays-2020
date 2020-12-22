@@ -95,7 +95,7 @@ function selectRandomMember(isFinalSelection) {
     let memberText = teamMemberList[index];
 
     if (isFinalSelection) {
-        console.log("Selected member" + memberText);
+        console.log("Selected member " + memberText);
     }
     document.getElementById("selectedPerson").innerText = isFinalSelection ? memberText + "!!!" : memberText
 }
