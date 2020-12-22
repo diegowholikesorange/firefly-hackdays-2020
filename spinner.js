@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     createTeamList();
     document.getElementById("spinnerButton")
-        .addEventListener('click', selectRandomMember);
+        .addEventListener('click', spin);
 });
 
 let team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
@@ -21,7 +21,34 @@ function createTeamList() {
     })
 }
 
-function selectRandomMember() {
+async function spin() {
+    for (var i = 0; i < 20; i++) {
+        selectRandomMember();
+        await sleep(100);
+    }
+
+    selectRandomMember();
+    await sleep(300);
+
+    selectRandomMember();
+    await sleep(300);
+
+    selectRandomMember();
+    await sleep(300);
+
+    selectRandomMember();
+    await sleep(400);
+
+    selectRandomMember();
+    await sleep(500);
+
+    selectRandomMember();
+    await sleep(650);
+
+    selectRandomMember(true);
+}
+
+function selectRandomMember(isFinalSelection) {
     let teamMemberList = []
 
     team.forEach((teamMember) => {
@@ -32,5 +59,10 @@ function selectRandomMember() {
     });
 
     let index = (Math.round(Math.random() * (teamMemberList.length - 1)));
-    document.getElementById("selectedPerson").innerText = teamMemberList[index]
+    let memberText = teamMemberList[index];
+    document.getElementById("selectedPerson").innerText = isFinalSelection ? memberText + "!!!" : memberText
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
