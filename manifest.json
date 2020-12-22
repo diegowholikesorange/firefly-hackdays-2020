@@ -5,5 +5,10 @@
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "shell.html"
+  },
+  "icons": {
+    "16": "firefly_logo.png",
+    "48": "firefly_logo.png",
+    "128": "firefly_logo.png"
   }
 }
