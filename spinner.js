@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .addEventListener('click', stopMusic);
 });
 
-let team = ["Aria", "Anand", "Diego", "Dipika", "Georgin", "Tim", "Tony"];
+let team = ["Aria", "Anand", "Chari", "Diego", "Dipika", "Georgin", "Swapna", "Tim", "Tony"];
 
 
 function createTeamList() {
