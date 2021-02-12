@@ -67,7 +67,9 @@ function playNote(interpolation) {
 }
 
 function playMusic() {
-    const songFiles = ['ghostbusters', 'finalCountdown', 'aladin', 'VivaLaVida', 'LegendOfZeldaOverworld', 'Numb', 'BeatIt'];
+    const songFiles = ['ghostbusters', 'finalCountdown', 'aladin', 'VivaLaVida', 'LegendOfZeldaOverworld', 'Numb',
+        'BeatIt', 'BillieJean', 'titanic', 'HeIsAPirates', 'BohemianRhapsody', 'Simpsons', 'StarWars', 'SuperMario64',
+        'Avengers', 'TotoAfrica'];
     let index = (Math.round(Math.random() * (songFiles.length - 1)));
     let selectedMidiFile =  'midis/'+songFiles[index]+'.mid';
     console.log("Playing music from MIDI file " + selectedMidiFile);
